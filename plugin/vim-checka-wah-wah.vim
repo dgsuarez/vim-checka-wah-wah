@@ -12,12 +12,12 @@ augroup END
 
 function! s:ToggleCheckbox(operateOn)
   let noCheckbox = ' \ze[^\[\s]'
-  let uncheckedCheckbox = '\[\]'
+  let uncheckedCheckbox = '\[\s*\]'
   let checkedCheckbox = '\[[^\s]\]'
 
-  if s:TryReplaceCheckbox(a:operateOn, noCheckbox, ' [] ') | return
+  if s:TryReplaceCheckbox(a:operateOn, noCheckbox, ' [ ] ') | return
   elseif s:TryReplaceCheckbox(a:operateOn, uncheckedCheckbox, ' [x]') | return
-  elseif s:TryReplaceCheckbox(a:operateOn, checkedCheckbox, ' []') | return
+  elseif s:TryReplaceCheckbox(a:operateOn, checkedCheckbox, ' [ ]') | return
   endif
 endfunction
 
@@ -25,7 +25,7 @@ function! s:FullToggleCheckbox(operateOn)
   let checkbox = '\[.*\]'
   let noCheckbox = ' \ze[^\[\s]'
 
-  if s:TryReplaceCheckbox(a:operateOn, noCheckbox, ' [] ') | return
+  if s:TryReplaceCheckbox(a:operateOn, noCheckbox, ' [ ] ') | return
   elseif s:TryReplaceCheckbox(a:operateOn, checkbox, '') | return
   endif
 endfunction
