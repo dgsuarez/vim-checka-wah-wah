@@ -22,7 +22,7 @@ function! s:ToggleCheckbox(operateOn)
 endfunction
 
 function! s:FullToggleCheckbox(operateOn)
-  let checkbox = '\[.*\]'
+  let checkbox = '\[.\?\]'
   let noCheckbox = ' \ze[^\[\s]'
 
   if s:TryReplaceCheckbox(a:operateOn, noCheckbox, ' [ ] ') | return
