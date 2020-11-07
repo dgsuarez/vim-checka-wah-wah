@@ -11,7 +11,7 @@ augroup checka_wah_wah_autocommands
 augroup END
 
 function! s:ToggleCheckbox(operateOn)
-  let noCheckbox = ' \ze[^\[\s]'
+  let noCheckbox = ' \ze[^\[\b]'
   let uncheckedCheckbox = '\[\s*\]'
   let checkedCheckbox = '\[[^\s]\]'
 
@@ -23,7 +23,7 @@ endfunction
 
 function! s:FullToggleCheckbox(operateOn)
   let checkbox = '\[.\?\]'
-  let noCheckbox = ' \ze[^\[\s]'
+  let noCheckbox = ' \ze[^\[\b]'
 
   if s:TryReplaceCheckbox(a:operateOn, noCheckbox, ' [ ] ') | return
   elseif s:TryReplaceCheckbox(a:operateOn, checkbox, '') | return
